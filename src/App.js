@@ -7,16 +7,18 @@ function App() {
   const url= `https://api.adviceslip.com/advice`;
 
   const[quote, setQuote] = useState('Just do it!');
-
-  useEffect(()=>{
-    getQuote();
-  }, [])
-
+  
   const getQuote = async () => {
     const response = await fetch(url);
     const data = await response.json();
     setQuote(data.slip.advice);
   }
+
+  useEffect(()=>{
+    getQuote();
+  }, [])
+
+  
 
   return (
     <div className="App">
